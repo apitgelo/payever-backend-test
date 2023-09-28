@@ -5,9 +5,11 @@ import { MongoModule } from './modules/mongo/mongo.module';
 import { UsersModule } from './modules/users/users.module';
 import { RouterModule } from 'nest-router';
 import routes from './app.router';
+import { AvatarsModule } from './modules/avatars/avatars.module';
 
 @Module({
   imports: [
+    AvatarsModule,
     RouterModule.forRoutes(routes),
     UsersModule,
     ConfigModule.forRoot({

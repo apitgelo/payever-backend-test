@@ -8,12 +8,12 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get('/:userId')
-  async getUserById(@Param('userId') userId: number) {
+  async getUserById(@Param('userId') userId: string) {
     return this.usersService.getUserById(userId);
   }
 
   @Get('/:userId/avatar')
-  async getUserAvatarByUserId(@Param('userId') userId: number) {
+  async getUserAvatarByUserId(@Param('userId') userId: string) {
     return this.usersService.getUserAvatarByUserId(userId);
   }
 }

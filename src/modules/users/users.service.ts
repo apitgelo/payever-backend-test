@@ -1,12 +1,17 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import * as fs from 'fs';
+import { AvatarsService } from '../avatars/avatars.service';
+import { avatar1 } from '../avatars/avatars.mock';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly httpService: HttpService) {}
+  constructor(
+    private readonly avatarsService: AvatarsService,
+    private readonly httpService: HttpService,
+  ) {}
 
-  async getUserDataById(userId: number): Promise<any> {
+  async getUserDataById(userId: string): Promise<any> {
     const response = await this.httpService
       .get(`https://reqres.in/api/users/${userId}`)
       .toPromise();
@@ -21,13 +26,13 @@ export class UsersService {
     return userData;
   }
 
-  async getUserById(userId: number): Promise<any> {
+  async getUserById(userId: string): Promise<any> {
     const userData = await this.getUserDataById(userId);
 
     return userData.data;
   }
 
-  async getUserAvatarByUserId(userId: number): Promise<any | undefined> {
+  async getUserAvatarByUserId(userId: string): Promise<any | undefined> {
     const userData = await this.getUserDataById(userId);
     const avatarUrl = userData.data.avatar;
 

@@ -1,13 +1,13 @@
-let mongoUri = process.env.MONGODB_USER
-  ? `${process.env.MONGODB_URI_SCHEME}://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`
-  : `${process.env.MONGODB_URI_SCHEME}://${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`;
-
-// enable using authsource when connect
-if (process.env.MONGODB_AUTHSOURCE) {
-  mongoUri = `${mongoUri}&authSource=${process.env.MONGODB_AUTHSOURCE}`;
-}
-
 export default () => {
+  let mongoUri = process.env.MONGODB_USER
+    ? `${process.env.MONGODB_URI_SCHEME}://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`
+    : `${process.env.MONGODB_URI_SCHEME}://${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`;
+
+  // enable using authsource when connect
+  if (process.env.MONGODB_AUTHSOURCE) {
+    mongoUri = `${mongoUri}&authSource=${process.env.MONGODB_AUTHSOURCE}`;
+  }
+
   return {
     env: process.env.NODE_ENV,
     version: process.env.npm_package_version,

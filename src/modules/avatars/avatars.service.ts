@@ -10,7 +10,7 @@ export class AvatarsService {
     return this.avatarsRepository.createAvatar(avatar);
   }
 
-  async getAvatarByUserId(userId: number) {
+  async getAvatarByUserId(userId: string) {
     const avatar = await this.avatarsRepository.getAvatarByUserId(userId);
 
     if (!avatar) {
