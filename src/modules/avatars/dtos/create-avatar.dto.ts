@@ -7,7 +7,7 @@ export class CreateAvatarDto {
 
   @IsNotEmpty()
   @IsNumber()
-  userId: number;
+  userId: string;
 
   @IsNotEmpty()
   @IsString()

@@ -24,7 +24,7 @@ export class AvatarsRepository {
     }
   }
 
-  async getAvatarByUserId(userId: number): Promise<Document> {
+  async getAvatarByUserId(userId: string): Promise<Document> {
     try {
       return await this.collection.findOne({ userId });
     } catch (err) {

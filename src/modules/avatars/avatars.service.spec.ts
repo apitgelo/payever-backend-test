@@ -47,10 +47,10 @@ describe('AvatarsService', () => {
   });
 
   it('Get an avatar of user 1', async () => {
-    const res = await avatarsService.createAvatar(avatar1);
+    await avatarsService.createAvatar(avatar1);
     const avatar = await avatarsService.getAvatarByUserId(avatar1.userId);
 
-    expect(avatar).toHaveProperty('userId', res.userId);
-    expect(avatar).toHaveProperty('path', res.path);
+    expect(avatar.userId).toBe(avatar1.userId);
+    expect(avatar.path).toBe(avatar1.path);
   });
 });
